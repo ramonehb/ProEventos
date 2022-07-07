@@ -27,9 +27,9 @@ namespace ProEventos.API.Controllers
     }
 
     [HttpGet("{id}")]
-    public Evento GetById(int id)
+    public string GetById(int id)
     {
-      return _context.Eventos.SingleOrDefault(e => e.EventoId == id);
+      return JsonSerializer.Serialize(_context.Eventos.SingleOrDefault(e => e.EventoId == id));
     }
 
     [HttpPost("{Evento}")]
