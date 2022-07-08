@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ProEventos.API.Data;
 using ProEventos.API.Models;
+using ProEventos.API.Models.Retorno;
 
 namespace ProEventos.API.Controllers
 {
@@ -33,9 +34,23 @@ namespace ProEventos.API.Controllers
     }
 
     [HttpPost("{Evento}")]
-    public string Post(Evento evento)
+    public EventoRetornoModel Post(Evento evento)
     {
-      return JsonSerializer.Serialize(evento);
+      var retorno = new EventoRetornoModel();
+      try
+      {
+        _context.Eventos.Add(evento);
+        _context.SaveChanges();
+        retorno.Mensagem = "Evento criado";
+        retorno.Sucesso = true;
+      }
+      catch (Exception e)
+      {
+        retorno.Mensagem = $"Erro ao gravar Evento: {e.Message}";
+        retorno.Sucesso = false;
+      }
+
+      return retorno;
     }
 
     [HttpPut("{id}")]
