@@ -1,4 +1,4 @@
-namespace ProEventos.Domain.Models
+namespace ProEventos.Domain
 {
     public class RedeSocial
     {
