@@ -493,4 +493,4 @@ testem.log
 Thumbs.db
 *.db-wal
 *.db-schema
-*.db
+*.db-shm
