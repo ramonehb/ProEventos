@@ -5,7 +5,8 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ProEventos.API.Data;
+using ProEventos.Persistence;
+using ProEventos.Domain;
 
 namespace ProEventos.API.Controllers
 {
@@ -13,43 +14,39 @@ namespace ProEventos.API.Controllers
   [Route("api/[controller]")]
   public class EventosController : ControllerBase
   {
-    private readonly DataContext _context;
-    public EventosController(DataContext context)
+    private readonly ProEventosContext _context;
+    public EventosController(ProEventosContext context)
     {
       _context = context;
     }
 
-    // [HttpGet]
-    // public IEnumerable<Evento> Get()
-    // {
-    //   return _context.Eventos;
-    // }
+    [HttpGet]
+    public IEnumerable<Evento> Get()
+    {
+      return _context.Eventos;
+    }
 
-    // [HttpGet("{id}")]
-    // public Evento GetById(int id)
-    // {
-    //   return _context.Eventos.SingleOrDefault(e => e.EventoId == id);
-    // }
+    [HttpGet("{id}")]
+    public Evento GetById(int id)
+    {
+      return _context.Eventos.SingleOrDefault(e => e.Id == id);
+    }
 
-    // [HttpPost("{Evento}")]
-    // public string Post(Evento evento)
-    // {
-    //   var retorno = new EventoRetornoModel();
-    //   try
-    //   {
-    //     _context.Eventos.Add(evento);
-    //     _context.SaveChanges();
-    //     retorno.Mensagem = "Evento criado";
-    //     retorno.Sucesso = true;
-    //   }
-    //   catch (Exception e)
-    //   {
-    //     retorno.Mensagem = $"Erro ao gravar Evento: {e.Message}";
-    //     retorno.Sucesso = false;
-    //   }
+    [HttpPost("{Evento}")]
+    public string Post(Evento evento)
+    {
+      try
+      {
+        _context.Eventos.Add(evento);
+        _context.SaveChanges();
+      }
+      catch (Exception e)
+      {
+        var msg = e.Message;
+      }
 
-    //   return retorno;
-    // }
+      return "Sucesso";
+    }
 
     [HttpPut("{id}")]
     public string Put(int id)
