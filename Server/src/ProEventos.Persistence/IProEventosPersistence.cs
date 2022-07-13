@@ -15,11 +15,11 @@ namespace ProEventos.Persistence
         //Eventos
         Task<Evento[]> GetAllEventosByTemaAsync(string tema, bool includePalestrantes);
         Task<Evento[]> GetAllEventosAsync(bool includePalestrantes);
-        Task<Evento[]> GetEventoByIdAsync(int EventoId, bool includePalestrantes);
+        Task<Evento> GetEventoByIdAsync(int id, bool includePalestrantes);
 
         //Palestrantes
         Task<Palestrante[]> GetAllPalestranteByNameAsync(string nome, bool includePalestrantes);
         Task<Palestrante[]> GetAllPalestranteAsync(bool includePalestrantes);
-        Task<Palestrante[]> GetPalestranteByIdAsync(int id, bool includePalestrantes);
+        Task<Palestrante> GetPalestranteByIdAsync(int id, bool includePalestrantes);
     }
 }
