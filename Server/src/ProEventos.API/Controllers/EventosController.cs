@@ -5,7 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ProEventos.Persistence;
+using ProEventos.Persistence.Contexto;
 using ProEventos.Domain;
 
 namespace ProEventos.API.Controllers
