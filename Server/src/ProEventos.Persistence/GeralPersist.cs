@@ -1,13 +1,13 @@
 using System.Threading.Tasks;
 using ProEventos.Persistence.Interfaces;
-using ProEventos.Persistence.Contexto;
+using ProEventos.Persistence.Contextos;
 
 namespace ProEventos.Persistence
 {
     public class GeralPersist : IGeralPersist
     {
-        private readonly ProEventosContext _context;
-        public GeralPersist(ProEventosContext context)
+        private readonly Context _context;
+        public GeralPersist(Context context)
         {
             _context = context;
         }

@@ -2,15 +2,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProEventos.Domain;
-using ProEventos.Persistence.Contexto;
+using ProEventos.Persistence.Contextos;
 using ProEventos.Persistence.Interfaces;
 
 namespace ProEventos.Persistence
 {
     public class EventoPersist : IEventoPersist
     {
-        private readonly ProEventosContext _context;
-        public EventoPersist(ProEventosContext context)
+        private readonly Context _context;
+        public EventoPersist(Context context)
         {
             _context = context;
         }

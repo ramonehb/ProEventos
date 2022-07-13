@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using ProEventos.Domain;
 
-namespace ProEventos.Persistence.Contexto
+namespace ProEventos.Persistence.Contextos
 {
-    public class ProEventosContext : DbContext
+    public class Context : DbContext
     {
-        public ProEventosContext(DbContextOptions<ProEventosContext> options) : base(options) { }
+        public Context(DbContextOptions<Context> options) : base(options) { }
         public DbSet<Evento> Eventos { get; set; }
         public DbSet<Lote> Lotes { get; set; }
         public DbSet<Palestrante> Palestrantes { get; set; }
