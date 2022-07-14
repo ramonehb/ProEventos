@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Evento } from '../models/Evento';
 import { EventoService } from '../services/evento.service';
 
 @Component({
@@ -8,16 +9,16 @@ import { EventoService } from '../services/evento.service';
 })
 export class EventosComponent implements OnInit {
 
-  public eventos: any = [];
-  public eventosFiltrados: any = [];
-  private _filtro : string = '';
+  public eventos: Evento[] = [];
+  public eventosFiltrados: Evento[] = [];
+  private _filtro: string = '';
 
-  exibirImg: boolean = true;
-  widthImg : number = 55;
-  heigthImg : number = 42;
-  marginImg : number = 2;
+  public exibirImg: boolean = true;
+  public widthImg: number = 55;
+  public heigthImg: number = 42;
+  public marginImg: number = 2;
 
-  public get filtro() : string {
+  public get filtro(): string {
     return this._filtro;
   }
   public set filtro(value: string) {
@@ -25,29 +26,29 @@ export class EventosComponent implements OnInit {
     this.eventosFiltrados = this.filtro ? this.filtrarEventos(this.filtro) : this.eventos;
   }
 
-  public filtrarEventos(filtrarPor : string) : any {
+  public filtrarEventos(filtrarPor: string): Evento[] {
     filtrarPor = filtrarPor.toLocaleLowerCase();
 
     return this.eventos.filter(
-      (evento : any ) => evento.tema.toLocaleLowerCase().indexOf(filtrarPor) !== -1 ||
-       evento.local.toLocaleLowerCase().indexOf(filtrarPor) !== -1
+      (evento: any) => evento.tema.toLocaleLowerCase().indexOf(filtrarPor) !== -1 ||
+        evento.local.toLocaleLowerCase().indexOf(filtrarPor) !== -1
     );
   }
   constructor(private eventoService: EventoService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getEventos();
   }
 
-  public alterarImagem(){
+  public alterarImagem(): void{
     this.exibirImg = !this.exibirImg;
   }
 
   public getEventos(): void {
-    this.eventoService.getEvento().subscribe(
-      response => {
-        this.eventos = response;
-        this.eventosFiltrados = response;
+    this.eventoService.getEventos().subscribe(
+      (_eventos: Evento[]) => {
+        this.eventos = _eventos;
+        this.eventosFiltrados = _eventos;
       },
       error => console.log(error)
     );
