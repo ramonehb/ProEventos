@@ -42,14 +42,14 @@ namespace ProEventos.API.Controllers
             try
             {
                 var evento = await _eventoService.GetEventoByIdAsync(id, true);
-                if (evento is null) return NotFound("Evento por Id não encontrado.");
+                if (evento is null) return NotFound("Evento encontrado.");
 
                 return Ok(evento);
             }
             catch (Exception e)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
-                  $"Erro ao tentar recuperar Evento por Id. Erro: {e.Message}");
+                  $"Erro ao tentar recuperar Evento por Id.\nErro: {e.Message}");
             }
         }
 
@@ -66,7 +66,7 @@ namespace ProEventos.API.Controllers
             catch (Exception e)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
-                  $"Erro ao tentar recuperar Evento por Id. Erro: {e.Message}");
+                  $"Erro ao tentar recuperar Evento por Id.\nErro: {e.Message}");
             }
         }
 
@@ -83,7 +83,7 @@ namespace ProEventos.API.Controllers
             catch (Exception e)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
-                 $"Erro ao tentar adicionar o evento. Erro: {e.Message}");
+                 $"Erro ao tentar adicionar o evento.\nErro: {e.Message}");
             }
         }
 
@@ -100,7 +100,7 @@ namespace ProEventos.API.Controllers
             catch (Exception e)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
-                $"Erro ao tentar atualizar o evento. Erro: {e.Message}");
+                $"Erro ao tentar atualizar o evento.\nErro: {e.Message}");
             }
         }
 
@@ -116,7 +116,7 @@ namespace ProEventos.API.Controllers
             catch (Exception e)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
-                 $"Erro ao tentar deletar o evento. Erro: {e.Message}");
+                 $"Erro ao tentar deletar o evento.\nErro: {e.Message}");
             }
         }
     }
