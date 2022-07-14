@@ -28,7 +28,7 @@ namespace ProEventos.Persistence
                     .ThenInclude(pe => pe.Palestrante);
             }
 
-            query = query.OrderBy(e => e.Id)
+            query = query.AsNoTracking().OrderBy(e => e.Id)
                          .Where(e => e.Tema.ToLower().Contains(tema.ToLower()));
 
             return await query.ToArrayAsync();
@@ -37,6 +37,7 @@ namespace ProEventos.Persistence
         public async Task<Evento[]> GetAllEventosAsync(bool includePalestrantes = false)
         {
             IQueryable<Evento> query = _context.Eventos
+                .AsNoTracking()
                 .Include(e => e.Lotes)
                 .Include(e => e.RedesSociais);
 
@@ -47,7 +48,7 @@ namespace ProEventos.Persistence
                     .ThenInclude(pe => pe.Palestrante);
             }
 
-            query = query.OrderBy(e => e.Id);
+            query = query.AsNoTracking().OrderBy(e => e.Id);
 
             return await query.ToArrayAsync();
         }
@@ -55,6 +56,7 @@ namespace ProEventos.Persistence
         public async Task<Evento> GetEventoByIdAsync(int id, bool includePalestrantes = false)
         {
             IQueryable<Evento> query = _context.Eventos
+                .AsNoTracking()
                 .Include(e => e.Lotes)
                 .Include(e => e.RedesSociais);
 
@@ -65,7 +67,7 @@ namespace ProEventos.Persistence
                     .ThenInclude(pe => pe.Palestrante);
             }
 
-            query = query.OrderBy(e => e.Id)
+            query = query.AsNoTracking().OrderBy(e => e.Id)
                          .Where(e => e.Id == id);
 
             return await query.FirstOrDefaultAsync();
