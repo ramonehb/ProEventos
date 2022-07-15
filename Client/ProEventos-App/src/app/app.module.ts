@@ -12,6 +12,7 @@ import { EventoService } from './services/evento.service';
 
 import { NavComponent } from './nav/nav.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     AppComponent,
     EventosComponent,
     PalestrantesComponent,
-      NavComponent
+    NavComponent,
+    DateTimeFormatPipe
    ],
   imports: [
     BrowserModule,
