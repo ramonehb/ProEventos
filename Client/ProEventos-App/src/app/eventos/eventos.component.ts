@@ -11,12 +11,12 @@ export class EventosComponent implements OnInit {
 
   public eventos: Evento[] = [];
   public eventosFiltrados: Evento[] = [];
-  private _filtro: string = '';
+  private _filtro = '';
 
-  public exibirImg: boolean = true;
-  public widthImg: number = 55;
-  public heigthImg: number = 42;
-  public marginImg: number = 2;
+  public exibirImg = true;
+  public widthImg = true;
+  public heigthImg = 42;
+  public marginImg = 2;
 
   public get filtro(): string {
     return this._filtro;
@@ -40,7 +40,7 @@ export class EventosComponent implements OnInit {
     this.getEventos();
   }
 
-  public alterarImagem(): void{
+  public alterarImagem(): void {
     this.exibirImg = !this.exibirImg;
   }
 
