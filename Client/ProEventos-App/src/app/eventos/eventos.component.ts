@@ -11,7 +11,7 @@ export class EventosComponent implements OnInit {
 
   public eventos: Evento[] = [];
   public eventosFiltrados: Evento[] = [];
-  private _filtro = '';
+  private filtroListado = '';
 
   public exibirImg = true;
   public widthImg = true;
@@ -19,10 +19,10 @@ export class EventosComponent implements OnInit {
   public marginImg = 2;
 
   public get filtro(): string {
-    return this._filtro;
+    return this.filtroListado;
   }
   public set filtro(value: string) {
-    this._filtro = value;
+    this.filtroListado = value;
     this.eventosFiltrados = this.filtro ? this.filtrarEventos(this.filtro) : this.eventos;
   }
 
@@ -45,12 +45,12 @@ export class EventosComponent implements OnInit {
   }
 
   public getEventos(): void {
-    this.eventoService.getEventos().subscribe(
-      (_eventos: Evento[]) => {
-        this.eventos = _eventos;
-        this.eventosFiltrados = _eventos;
+    this.eventoService.getEventos().subscribe({
+      next: (eventos: Evento[]) => {
+        this.eventos = eventos;
+        this.eventosFiltrados = eventos;
       },
-      error => console.log(error)
-    );
+      error: (error: any) => console.log(error)
+    });
   }
 }
