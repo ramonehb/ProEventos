@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-evento-detalhe',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventoDetalheComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup = this.formBuilder.group({});
+
+  get f(): any{
+    return this.form.controls;
+  }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.validation();
   }
 
+  public validation(): void {
+    this.form = this.formBuilder.group({
+      tema : ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
+      local : ['', Validators.required],
+      dataEvento: ['', Validators.required],
+      qtdPessoas : ['',[Validators.required, Validators.max(120000)]],
+      telefone : ['', Validators.required],
+      email : ['', [Validators.required, Validators.email]],
+      imagemURL : ['', Validators.required],
+    });
+  }
 }
