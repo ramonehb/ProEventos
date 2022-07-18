@@ -10,7 +10,7 @@ export class EventoDetalheComponent implements OnInit {
 
   form: FormGroup = this.formBuilder.group({});
 
-  get f(): any{
+  get f(): any {
     return this.form.controls;
   }
   constructor(private formBuilder: FormBuilder) { }
@@ -21,13 +21,13 @@ export class EventoDetalheComponent implements OnInit {
 
   public validation(): void {
     this.form = this.formBuilder.group({
-      tema : ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-      local : ['', Validators.required],
+      tema: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
+      local: ['', Validators.required],
       dataEvento: ['', Validators.required],
-      qtdPessoas : ['',[Validators.required, Validators.max(120000)]],
-      telefone : ['', Validators.required],
-      email : ['', [Validators.required, Validators.email]],
-      imagemURL : ['', Validators.required],
+      qtdPessoas: ['', [Validators.required, Validators.max(120000)]],
+      telefone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      imagemURL: ['', Validators.required],
     });
   }
 }
