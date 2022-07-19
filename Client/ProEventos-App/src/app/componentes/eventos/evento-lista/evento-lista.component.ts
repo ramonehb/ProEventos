@@ -80,7 +80,7 @@ export class EventoListaComponent implements OnInit {
 
   public confirm(): void {
     this.modalRef?.hide();
-    this.toastr.success('Evento excluído com sucesso', 'Deletado!');
+    this.toastr.success('Evento excluído com sucesso', 'Atenção');
   }
 
   public decline(): void {

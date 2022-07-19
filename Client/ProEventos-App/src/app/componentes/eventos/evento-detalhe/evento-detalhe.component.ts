@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-evento-detalhe',
@@ -15,6 +16,7 @@ export class EventoDetalheComponent implements OnInit {
   }
   constructor(
     private formBuilder: FormBuilder,
+    private toastr: ToastrService
     ) { }
 
   ngOnInit(): void {
@@ -35,5 +37,9 @@ export class EventoDetalheComponent implements OnInit {
 
   public resetForm(): void{
     this.form.reset();
+  }
+
+  public confirm(): void {
+    this.toastr.success('Evento adicionado com sucesso', 'Atenção');
   }
 }

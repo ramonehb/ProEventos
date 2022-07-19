@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorField } from '@app/helpers/ValidatorField';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +12,8 @@ export class RegistrationComponent implements OnInit {
   form: FormGroup = this.formBuilder.group({});
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) { }
 
   public ngOnInit(): void {
@@ -35,5 +37,9 @@ export class RegistrationComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
       confirmPass: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
     }, formOptions);
+  }
+
+  public confirm(): void {
+    this.toastr.success('Usuário cadastrado com sucesso', 'Atenção');
   }
 }
