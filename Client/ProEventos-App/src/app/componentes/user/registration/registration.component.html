@@ -8,7 +8,6 @@
   </div>
 
   <div class="col-md-6">
-
     <form class="p-1" [formGroup]="form">
       <div class="pb-2 d-block d-md-none">
         <h3 class="border-bottom">Cadastro de Usuário</h3>
@@ -16,7 +15,8 @@
       <div class="form-row">
         <div class="form-group col-sm-6">
           <label>Primeiro Nome</label>
-          <input type="text" class="form-control" [ngClass]="{'is-invalid': f.nome.errors && f.nome.touched}" placeholder="Insira o Primeiro nome" formControlName="nome"/>
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': f.nome.errors && f.nome.touched}"
+            placeholder="Insira o Primeiro nome" formControlName="nome" />
           <div *ngIf="f.nome.errors?.required" class="invalid-feedback">
             Nome é obrigatório.
           </div>
@@ -29,7 +29,8 @@
         </div>
         <div class="form-group col-sm-6">
           <label>Último nome</label>
-          <input type="text" [ngClass]="{'is-invalid': f.ultimoNome.errors && f.ultimoNome.touched}" class="form-control" formControlName="ultimoNome" placeholder="Insira o Último nome" />
+          <input type="text" [ngClass]="{'is-invalid': f.ultimoNome.errors && f.ultimoNome.touched}"
+            class="form-control" formControlName="ultimoNome" placeholder="Insira o Último nome" />
           <div *ngIf="f.ultimoNome.errors?.required" class="invalid-feedback">
             Ultimo Nome é obrigatório.
           </div>
@@ -43,7 +44,8 @@
       </div>
       <div class="form-group">
         <label for="">e-mail:</label>
-        <input class="form-control" type="text" [ngClass]="{'is-invalid': f.email.errors && f.email.touched}" formControlName="email" placeholder="Insira o e-mail" />
+        <input class="form-control" type="text" [ngClass]="{'is-invalid': f.email.errors && f.email.touched}"
+          formControlName="email" placeholder="Insira o e-mail" />
         <div *ngIf="f.email.errors?.required" class="invalid-feedback">
           e-mail é obrigatório.
         </div>
@@ -53,7 +55,8 @@
       </div>
       <div class="form-group">
         <label for="">Usuario:</label>
-        <input class="form-control" [ngClass]="{'is-invalid': f.user.errors && f.user.touched}" type="text" placeholder="Insira o nome de Usuário" formControlName="user"/>
+        <input class="form-control" [ngClass]="{'is-invalid': f.user.errors && f.user.touched}" type="text"
+          placeholder="Insira o nome de Usuário" formControlName="user" />
         <div *ngIf="f.user.errors?.required" class="invalid-feedback">
           Usuário é obrigatório.
         </div>
@@ -67,7 +70,9 @@
       <div class="form-row">
         <div class="form-group col-sm-6">
           <label for="">Senha:</label>
-          <input class="form-control" type="password" [ngClass]="{'is-invalid': f.password.errors && f.password.touched}" formControlName="password" placeholder="Digite uma Senha" />
+          <input class="form-control" type="password"
+            [ngClass]="{'is-invalid': f.password.errors && f.password.touched}" formControlName="password"
+            placeholder="Digite uma Senha" />
           <div *ngIf="f.password.errors?.required" class="invalid-feedback">
             Senha é obrigatório.
           </div>
@@ -80,7 +85,9 @@
         </div>
         <div class="form-group col-sm-6">
           <label for="">Confirmar Senha:</label>
-          <input class="form-control" type="password" [ngClass]="{'is-invalid': f.confirmPass.errors && f.confirmPass.touched}" formControlName="confirmPass" placeholder="Confirme a Senha" />
+          <input class="form-control" type="password"
+            [ngClass]="{'is-invalid': f.confirmPass.errors && f.confirmPass.touched}" formControlName="confirmPass"
+            placeholder="Confirme a Senha" />
           <div *ngIf="f.confirmPass.errors?.required" class="invalid-feedback">
             Confirmação de senha é obrigatório.
           </div>
@@ -116,6 +123,5 @@
         </div>
       </div>
     </form>
-
   </div>
 </div>

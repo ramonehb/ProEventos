@@ -17,7 +17,7 @@ export class EventoDetalheComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.validation();
@@ -35,7 +35,7 @@ export class EventoDetalheComponent implements OnInit {
     });
   }
 
-  public resetForm(): void{
+  public resetForm(): void {
     this.form.reset();
   }
 

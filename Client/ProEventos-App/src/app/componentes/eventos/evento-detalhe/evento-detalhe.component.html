@@ -23,7 +23,7 @@
         <div class="form-group col-md-8">
           <label>Local</label>
           <input type="text" class="form-control" [ngClass]="{'is-invalid': f.local.errors && f.local.touched }"
-          formControlName="local" placeholder="Insira o Local">
+            formControlName="local" placeholder="Insira o Local">
           <div *ngIf="f.local.errors?.required" class="invalid-feedback">
             Local é obrigatório.
           </div>
@@ -36,7 +36,8 @@
         </div>
         <div class="form-group col-md-4">
           <label>Data e Hora</label>
-          <input type="datetime" class="form-control" [ngClass]="{'is-invalid': f.dataEvento.errors && f.dataEvento.touched}" formControlName="dataEvento"
+          <input type="datetime" class="form-control"
+            [ngClass]="{'is-invalid': f.dataEvento.errors && f.dataEvento.touched}" formControlName="dataEvento"
             placeholder="Insira a Data">
           <div class="invalid-feedback">
             Data e Hora é obrigatório.
@@ -46,7 +47,8 @@
       <div class="form-row">
         <div class="form-group col-md-2">
           <label>Qtd Pessoas</label>
-          <input type="text" class="form-control" [ngClass]="{'is-invalid': f.qtdPessoas.errors && f.qtdPessoas.touched}" formControlName="qtdPessoas"
+          <input type="text" class="form-control"
+            [ngClass]="{'is-invalid': f.qtdPessoas.errors && f.qtdPessoas.touched}" formControlName="qtdPessoas"
             placeholder="Quantidade de pessoas">
           <div *ngIf="f.qtdPessoas.errors?.required" class="invalid-feedback">
             Qtd Pessoas é obrigatório.
@@ -57,7 +59,8 @@
         </div>
         <div class="form-group col-md-2">
           <label>Telefone</label>
-          <input type="text" class="form-control" [ngClass]="{'is-invalid': f.telefone.errors && f.telefone.touched}" formControlName="telefone" placeholder="(00) 00000-0000">
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': f.telefone.errors && f.telefone.touched}"
+            formControlName="telefone" placeholder="(00) 00000-0000">
           <div *ngIf="f.telefone.errors?.required" class="invalid-feedback">
             Telefone é obrigatório.
           </div>
@@ -67,7 +70,8 @@
         </div>
         <div class="form-group col-md-4">
           <label>e-mail</label>
-          <input type="text" class="form-control" [ngClass]="{'is-invalid': f.email.errors && f.email.touched}" formControlName="email" placeholder="Insira o E-mail">
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': f.email.errors && f.email.touched}"
+            formControlName="email" placeholder="Insira o E-mail">
           <div *ngIf="f.email.errors?.required" class="invalid-feedback">
             e-mail é obrigatório.
           </div>
@@ -77,7 +81,8 @@
         </div>
         <div class="form-group col-md-4">
           <label>Imagem</label>
-          <input type="text" class="form-control" [ngClass]="{'is-invalid': f.imagemURL.errors && f.imagemURL.touched}" formControlName="imagemURL" placeholder="Insira a Imagem">
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': f.imagemURL.errors && f.imagemURL.touched}"
+            formControlName="imagemURL" placeholder="Insira a Imagem">
           <div class="invalid-feedback">
             Imagem é obrigatório.
           </div>
@@ -97,4 +102,3 @@
     </div>
   </form>
 </div>
-

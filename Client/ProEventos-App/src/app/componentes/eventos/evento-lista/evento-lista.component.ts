@@ -48,7 +48,7 @@ export class EventoListaComponent implements OnInit {
     private toastr: ToastrService,
     private spinner: NgxSpinnerService,
     private router: Router
-    ) { }
+  ) { }
 
   public ngOnInit(): void {
     this.spinner.show();
@@ -74,8 +74,8 @@ export class EventoListaComponent implements OnInit {
     });
   }
 
-  public openModal(template: TemplateRef<any>) : void {
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  public openModal(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
   public confirm(): void {
