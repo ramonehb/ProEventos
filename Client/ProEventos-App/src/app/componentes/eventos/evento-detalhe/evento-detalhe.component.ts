@@ -22,10 +22,10 @@ export class EventoDetalheComponent implements OnInit {
   public validation(): void {
     this.form = this.formBuilder.group({
       tema: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-      local: ['', Validators.required],
+      local: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
       dataEvento: ['', Validators.required],
       qtdPessoas: ['', [Validators.required, Validators.max(120000)]],
-      telefone: ['', Validators.required],
+      telefone: ['', [Validators.required, Validators.minLength(11)]],
       email: ['', [Validators.required, Validators.email]],
       imagemURL: ['', Validators.required],
     });
