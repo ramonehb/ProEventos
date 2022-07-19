@@ -13,7 +13,9 @@ export class EventoDetalheComponent implements OnInit {
   get f(): any {
     return this.form.controls;
   }
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    ) { }
 
   ngOnInit(): void {
     this.validation();
@@ -29,5 +31,9 @@ export class EventoDetalheComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       imagemURL: ['', Validators.required],
     });
+  }
+
+  public resetForm(): void{
+    this.form.reset();
   }
 }
