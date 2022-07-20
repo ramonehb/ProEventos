@@ -45,4 +45,8 @@ export class PerfilComponent implements OnInit {
   public confirm(): void {
     this.toatrs.success('Perfil cadastrado com sucesso', 'Atenção');
   }
+
+  public resetForm(): void{
+    this.form.reset();
+  }
 }
