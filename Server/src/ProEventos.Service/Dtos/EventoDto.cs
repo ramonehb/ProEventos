@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ProEventos.Service.Dtos
 {
     public class EventoDto
@@ -10,5 +12,8 @@ namespace ProEventos.Service.Dtos
         public string ImagemURL { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }        
+        public IEnumerable<LoteDto> Lotes { get; set; }
+        public IEnumerable<RedeSocialDto> RedesSociais { get; set; }
+        public IEnumerable<PalestranteDto> Palestrantes { get; set; }
     }
 }
