@@ -13,23 +13,24 @@
     C#</br>
     Entity Framewrok Core</br>
     Swagger</br>
-    MySQL</br>
+    MySQL
   </p>
   
   <h4>Front-end</h4>
   <p>
     Angular</br>
     Typescript</br>
-    Bootstrap </br>
-    ngx-bootstrap</br>
+    HTML</br>
+    Bootstrap</br>
+    ngx-bootstrap
   </p>
   
   <h4>Ferramentas</h4>
   <p>
-    Visual Studio Code </br>
-    GIT </br>
-    CLI </br>
-    Workbench </br<
+    Visual Studio Code</br>
+    GIT</br>
+    CLI</br>
+    Workbench
   </p>
  </div>
 
