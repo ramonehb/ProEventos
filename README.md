@@ -3,7 +3,7 @@
 </h2>
 <div>
   <h4>Objetivo do projeto</h4>
-  <p>Praticar os conhecimentos com .NET Web API utilizando práticas do clean code, arquitetura limpa e treinar o front-end com Angular. </p>
+  <p>Práticar os conhecimentos com .NET Web API utilizando práticas do clean code, arquitetura limpa e treinar o front-end com Angular. </p>
   
   <h4>Objetivo da aplicação ProEventos</h4>
   <p>Realizar cadastro de usuário, eventos, palestrantes e redes sociais com autenticação totalmente responsiva com opções de edição e deleção dos eventos e pesquisas com filtros, formulários de cadastros com validações.</p>
