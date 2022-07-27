@@ -1,9 +1,35 @@
-# ProEventos
-Projeto full-stack com Angular 10 e .NET 5
-
 <h2 align="center"> 
-  Aplicação Web utilizando API RESTful com o ASP.NET Core 5 e EF Core 5 e como front-end Angular 12 👨🏽‍💻
+  Aplicação de gestão de eventos desenvolvido com .NET e Angular 👨🏽‍💻
 </h2>
 <div>
-  <p>💻 Projeto de estudos com Angular 12, TypeScript, .NET Core 5, C# e Entity Framework Core 5 </br>Objetivo: compor uma solução web responsiva completa para cadastrar eventos, palestrantes, usuários. </br>Totalmente autenticada.</p>
+  <h4>Objetivo do projeto</h4>
+  <p>Praticar os conhecimentos com .NET Web API utilizando praticas do clean code e arquitetura limpa e treinar o front-end com Angular. </p>
+  
+  <h4>Objetivo da aplicação ProEventos</h4>
+  <p>Realizar cadastro de usuário, eventos, palestrantes e redes sociais com autenticação totalmente responsiva com opções de edição e deleção dos eventos e pesquisas com filtros, formulários de cadastros com validações.</p>
+  <h4>Back-end</h4>
+  <p>
+    .NET Core</br>
+    C#</br>
+    Entity Framewrok Core</br>
+    Swagger</br>
+    MySQL</br>
+  </p>
+  
+  <h4>Front-end</h4>
+  <p>
+    Angular</br>
+    Typescript</br>
+    Bootstrap </br>
+    ngx-bootstrap</br>
+  </p>
+  
+  <h4>Ferramentas</h4>
+  <p>
+    Visual Studio Code </br>
+    GIT </br>
+    CLI </br>
+    Workbench </br<
+  </p>
  </div>
+
