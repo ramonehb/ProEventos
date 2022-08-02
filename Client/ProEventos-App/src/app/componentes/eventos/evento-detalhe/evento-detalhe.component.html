@@ -38,6 +38,8 @@
           <label>Data e Hora</label>
           <input type="datetime" class="form-control"
             [ngClass]="formValidator(f.dataEvento)" formControlName="dataEvento"
+            bsDatepicker
+            [bsConfig]="bsConfig"
             placeholder="Insira a Data">
           <div class="invalid-feedback">
             Data e Hora é obrigatório.
