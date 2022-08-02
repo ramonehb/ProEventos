@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Constants } from '@app/util/constants';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,7 +12,6 @@ import { ToastrService } from 'ngx-toastr';
 export class EventoDetalheComponent implements OnInit {
 
   form: FormGroup = this.formBuilder.group({});
-  paisProjeto = 'pt-br';
 
   get f(): any {
     return this.form.controls;
@@ -31,7 +31,7 @@ export class EventoDetalheComponent implements OnInit {
     private toastr: ToastrService,
     private localeService: BsLocaleService
   ) {
-    this.localeService.use(this.paisProjeto);
+    this.localeService.use(Constants.LocalProject);
   }
 
   ngOnInit(): void {
