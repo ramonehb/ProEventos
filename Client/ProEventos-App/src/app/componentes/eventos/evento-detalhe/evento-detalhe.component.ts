@@ -42,4 +42,8 @@ export class EventoDetalheComponent implements OnInit {
   public confirm(): void {
     this.toastr.success('Evento adicionado com sucesso', 'Atenção');
   }
+
+  public formValidator(campo: FormControl): any {
+    return {'is-invalid': campo.errors && campo.touched};
+  }
 }

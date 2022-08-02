@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidatorField } from '@app/helpers/ValidatorField';
 import { ToastrService } from 'ngx-toastr';
 
@@ -48,5 +48,9 @@ export class PerfilComponent implements OnInit {
 
   public resetForm(): void{
     this.form.reset();
+  }
+
+  public formValidator(campo: FormControl): any {
+    return {'is-invalid': campo.errors && campo.touched};
   }
 }
