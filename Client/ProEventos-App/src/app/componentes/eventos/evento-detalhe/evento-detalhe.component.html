@@ -38,6 +38,7 @@
           <label>Data e Hora</label>
           <input type="datetime" class="form-control"
             [ngClass]="formValidator(f.dataEvento)" formControlName="dataEvento"
+            value="{{evento.dataEvento | DateFormatPipe}}"
             bsDatepicker
             [bsConfig]="bsConfig"
             placeholder="Insira a Data">

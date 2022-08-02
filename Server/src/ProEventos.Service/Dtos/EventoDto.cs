@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,7 +12,7 @@ namespace ProEventos.Service.Dtos
         StringLength(50, MinimumLength = 3, ErrorMessage = "O local deve ter no mínimo 3 ou no máximo 50 carecteres.")]
         public string Local { get; set; }
         
-        public string DataEvento { get; set; }
+        public DateTime DataEvento { get; set; }
 
         [Required(ErrorMessage = "O campo tema é obrigatório."),
         StringLength(50, MinimumLength = 3, ErrorMessage = "O tema deve ter no mínimo 3 ou no máximo 50 carecteres.")]
