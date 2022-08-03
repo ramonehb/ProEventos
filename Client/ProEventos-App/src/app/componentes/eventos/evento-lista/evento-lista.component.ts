@@ -91,7 +91,6 @@ export class EventoListaComponent implements OnInit {
       (result: any) => {
         if (result.mensagem === 'Deletado'){
           this.toastr.success('Evento excluído com sucesso.', 'Atenção');
-          console.log('Deletado');
           this.spinner.hide();
           this.carregarEventos();
         }
