@@ -18,19 +18,6 @@ export class EventoDetalheComponent implements OnInit {
   evento = {} as Evento;
   form: FormGroup = this.formBuilder.group({});
 
-  get f(): any {
-    return this.form.controls;
-  }
-
-  get bsConfig(): any {
-    return {
-      adaptivePosition: true,
-      dateInputFormat: 'DD/MM/YYYY hh:mm a',
-      containerClass: 'theme-default',
-      showWeekNumbers: false,
-    };
-  }
-
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
@@ -44,7 +31,20 @@ export class EventoDetalheComponent implements OnInit {
 
   ngOnInit(): void {
     this.carregaEvento();
-    this.validation();
+    this.validacao();
+  }
+
+  get f(): any {
+    return this.form.controls;
+  }
+
+  get bsConfig(): any {
+    return {
+      adaptivePosition: true,
+      dateInputFormat: 'DD/MM/YYYY hh:mm a',
+      containerClass: 'theme-default',
+      showWeekNumbers: false,
+    };
   }
 
   public carregaEvento(): void {
@@ -67,7 +67,7 @@ export class EventoDetalheComponent implements OnInit {
     }
   }
 
-  public validation(): void {
+  public validacao(): void {
     this.form = this.formBuilder.group({
       tema: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
       local: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
@@ -79,11 +79,11 @@ export class EventoDetalheComponent implements OnInit {
     });
   }
 
-  public resetForm(): void {
+  public resetarForm(): void {
     this.form.reset();
   }
 
-  public confirm(): void {
+  public confirmar(): void {
     this.toastr.success('Evento adicionado com sucesso', 'Atenção');
   }
 

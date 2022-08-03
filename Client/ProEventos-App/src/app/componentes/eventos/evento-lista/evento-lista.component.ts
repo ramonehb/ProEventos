@@ -17,33 +17,17 @@ export class EventoListaComponent implements OnInit {
   config = {
     keyboard: true
   };
+
   public eventos: Evento[] = [];
   public eventosFiltrados: Evento[] = [];
   public eventoNome = '';
   public eventoId = 0;
   private filtroListado = '';
-
   public exibirImg = true;
   public widthImg = true;
   public heigthImg = 42;
   public marginImg = 2;
 
-  public get filtro(): string {
-    return this.filtroListado;
-  }
-  public set filtro(value: string) {
-    this.filtroListado = value;
-    this.eventosFiltrados = this.filtro ? this.filtrarEventos(this.filtro) : this.eventos;
-  }
-
-  public filtrarEventos(filtrarPor: string): Evento[] {
-    filtrarPor = filtrarPor.toLocaleLowerCase();
-
-    return this.eventos.filter(
-      (evento: any) => evento.tema.toLocaleLowerCase().indexOf(filtrarPor) !== -1 ||
-        evento.local.toLocaleLowerCase().indexOf(filtrarPor) !== -1
-    );
-  }
   constructor(
     private eventoService: EventoService,
     private modalService: BsModalService,
@@ -88,8 +72,8 @@ export class EventoListaComponent implements OnInit {
     this.spinner.show();
 
     this.eventoService.deleteEvento(this.eventoId).subscribe(
-      (result: any) => {
-        if (result.mensagem === 'Deletado'){
+      (resultado: any) => {
+        if (resultado.mensagem === 'Deletado'){
           this.toastr.success('Evento excluído com sucesso.', 'Atenção');
           this.spinner.hide();
           this.carregarEventos();
@@ -112,5 +96,23 @@ export class EventoListaComponent implements OnInit {
 
   public detalheEvento(id: number): void {
     this.router.navigate([`eventos/detalhe/${id}`]);
+  }
+
+  public get filtro(): string {
+    return this.filtroListado;
+  }
+
+  public set filtro(value: string) {
+    this.filtroListado = value;
+    this.eventosFiltrados = this.filtro ? this.filtrarEventos(this.filtro) : this.eventos;
+  }
+
+  public filtrarEventos(filtrarPor: string): Evento[] {
+    filtrarPor = filtrarPor.toLocaleLowerCase();
+
+    return this.eventos.filter(
+      (evento: any) => evento.tema.toLocaleLowerCase().indexOf(filtrarPor) !== -1 ||
+        evento.local.toLocaleLowerCase().indexOf(filtrarPor) !== -1
+    );
   }
 }
