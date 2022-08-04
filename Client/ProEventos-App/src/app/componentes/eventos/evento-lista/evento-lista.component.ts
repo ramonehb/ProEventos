@@ -52,12 +52,10 @@ export class EventoListaComponent implements OnInit {
         this.eventosFiltrados = eventos;
       },
       error: (error: any) => {
-        this.spinner.hide();
         this.toastr.error('Erro ao Carregar os Eventos', 'Erro!');
         console.log(error);
-      },
-      complete: () => this.spinner.hide()
-    });
+      }
+    }).add(this.spinner.hide());
   }
 
   public openModal(eventoId: number, eventoTema: string, event: any, template: TemplateRef<any>): void {
@@ -67,27 +65,22 @@ export class EventoListaComponent implements OnInit {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
-  public confirm(): void {
+  public confirmarDelecao(): void {
     this.modalRef?.hide();
     this.spinner.show();
 
     this.eventoService.deleteEvento(this.eventoId).subscribe(
       (resultado: any) => {
         if (resultado.mensagem === 'Deletado'){
-          this.toastr.success('Evento excluído com sucesso.', 'Atenção');
-          this.spinner.hide();
+          this.toastr.success('Evento excluído com sucesso.', 'Deletado');
           this.carregarEventos();
         }
       },
       (erro: any) => {
         console.error(`Erro: ${erro}`);
         this.toastr.error('Erro ao tentar deletar evento.', 'Atenção');
-        this.spinner.hide();
-      },
-      () => this.spinner.hide()
-    );
-
-
+      }
+    ).add(this.spinner.hide());
   }
 
   public decline(): void {

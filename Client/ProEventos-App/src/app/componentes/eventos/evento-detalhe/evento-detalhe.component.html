@@ -68,7 +68,7 @@
             Telefone é obrigatório.
           </div>
           <div *ngIf="f.telefone.errors?.minlength" class="invalid-feedback">
-            Telefone deve ter no mínimo 11 caracteres.
+            Telefone deve ter no mínimo 8 caracteres.
           </div>
         </div>
         <div class="form-group col-md-4">
@@ -97,7 +97,7 @@
         <button class="btn btn-outline-secondary mr-auto border" (click)="resetarForm()">
           Cancelar Alteração
         </button>
-        <button class="btn btn-success" [disabled]="!form.valid" (click)="confirmar()">
+        <button class="btn btn-success" [disabled]="!form.valid" (click)="salvarAlteracao(evento)">
           <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
           Salvar Evento
         </button>
