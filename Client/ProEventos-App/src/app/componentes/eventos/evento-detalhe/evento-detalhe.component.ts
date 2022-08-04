@@ -17,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 export class EventoDetalheComponent implements OnInit {
 
   evento = {} as Evento;
-  estadoSalvar = 'post';
+  metodo = 'post';
   novo = true;
   form: FormGroup = this.formBuilder.group({});
 
@@ -55,7 +55,7 @@ export class EventoDetalheComponent implements OnInit {
     const eventoId = this.routerActive.snapshot.paramMap.get('id');
 
     if (eventoId != null) {
-      this.estadoSalvar = 'put';
+      this.metodo = 'put';
       this.novo = false;
       this.spinner.show();
 
@@ -92,16 +92,16 @@ export class EventoDetalheComponent implements OnInit {
     this.spinner.show();
 
     if (this.form.valid) {
-      this.evento = (this.estadoSalvar === 'post') ? {... this.form.value}  : {id: this.evento.id, ... this.form.value} ;
+      this.evento = (this.novo) ? { ... this.form.value } : { id: this.evento.id, ... this.form.value };
 
-      this.eventoService[this.estadoSalvar](this.evento).subscribe(
+      this.eventoService[this.metodo](this.evento).subscribe(
         () => {
           this.router.navigate(['eventos/lista']);
           this.toastr.success(this.novo ? 'Evento cadastro com sucesso' : 'Evento atualizado com sucesso', 'Sucesso');
         },
         (erro: any) => {
           console.log(`Erro: ${erro}`);
-          this.toastr.error(this.novo ? 'Erro ao cadastrar evento' :'Erro ao atualizar evento', 'Atenção');
+          this.toastr.error(this.novo ? 'Erro ao cadastrar evento' : 'Erro ao atualizar evento', 'Atenção');
         }
       ).add(this.spinner.hide());
     }
