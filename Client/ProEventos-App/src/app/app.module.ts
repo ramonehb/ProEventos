@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { EventosComponent } from './componentes/eventos/eventos.component';
 import { PalestrantesComponent } from './componentes/palestrantes/palestrantes.component';
 import { EventoService } from './services/evento.service';
+import { LoteService } from './services/lote.service';
 import { NavComponent } from './shared/nav/nav.component';
 import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
 import { TituloComponent } from './shared/titulo/titulo.component';
@@ -72,7 +73,8 @@ defineLocale('pt-br', ptBrLocale);
     BsDatepickerModule.forRoot()
   ],
   providers: [
-    EventoService
+    EventoService,
+    LoteService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
