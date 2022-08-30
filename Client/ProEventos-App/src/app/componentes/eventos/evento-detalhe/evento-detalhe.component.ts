@@ -1,7 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Evento } from '@app/models/Evento';
+import { Lote } from '@app/models/Lote';
 import { EventoService } from '@app/services/evento.service';
 import { Constants } from '@app/util/constants';
 import { idLocale } from 'ngx-bootstrap/chronos';
@@ -38,6 +39,9 @@ export class EventoDetalheComponent implements OnInit {
     this.validacao();
   }
 
+  get lotes(): FormArray {
+    return this.form.get('lotes') as FormArray;
+  }
   get f(): any {
     return this.form.controls;
   }
@@ -49,6 +53,21 @@ export class EventoDetalheComponent implements OnInit {
       containerClass: 'theme-default',
       showWeekNumbers: false,
     };
+  }
+
+  public adicionarLote(): void {
+    this.lotes.push(this.criarLote({id: 0} as Lote));
+  }
+
+  public criarLote(lote: Lote): FormGroup {
+    return this.formBuilder.group({
+      id: [lote.id],
+      nome: [lote.nome, Validators.required],
+      quantidade: [lote.quantidade, Validators.required],
+      preco: [lote.preco, Validators.required],
+      dataInicio: [lote.dataInicio],
+      dataFim: [lote.dataFim],
+    });
   }
 
   public carregaEvento(): void {
@@ -81,6 +100,7 @@ export class EventoDetalheComponent implements OnInit {
       telefone: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
       imagemURL: ['', Validators.required],
+      lotes: this.formBuilder.array([])
     });
   }
 
@@ -107,7 +127,7 @@ export class EventoDetalheComponent implements OnInit {
     }
   }
 
-  public formValidator(campo: FormControl): any {
+  public formValidator(campo: FormControl | AbstractControl): any {
     return { 'is-invalid': campo.errors && campo.touched };
   }
 }
