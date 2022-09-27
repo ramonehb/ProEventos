@@ -15,8 +15,8 @@ namespace ProEventos.Service
         private readonly IMapper _mapper;
 
         public LoteService(IGeralPersist geralPersist,
-                             ILotePersist lotePersist,
-                             IMapper mapper)
+                           ILotePersist lotePersist,
+                           IMapper mapper)
         {
             _mapper = mapper;
             _geralPersist = geralPersist;

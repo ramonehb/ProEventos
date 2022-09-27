@@ -15,12 +15,12 @@ namespace ProEventos.Persistence
             _context = context;
         }
 
-        public async Task<Lote> GetLoteByIdsAsync(int eventoId, int id)
+        public async Task<Lote> GetLoteByIdsAsync(int eventoId, int loteId)
         {
             IQueryable<Lote> query = _context.Lotes;
 
             query = query.AsNoTracking()
-                         .Where(lote => lote.EventoId == eventoId && lote.Id == id);
+                         .Where(lote => lote.EventoId == eventoId && lote.Id == loteId);
 
             return await query.FirstOrDefaultAsync();
         }

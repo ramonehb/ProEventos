@@ -20,6 +20,11 @@ namespace ProEventos.API.Controllers
             _loteService = loteService;
         }
 
+        /// <summary>
+        /// Retorna todos os lotes do determinado evento passado como parâmetro.
+        /// </summary>
+        /// <param name="eventoId">Código unico do evento.</param>
+        /// <returns></returns>
         [HttpGet("{eventoId}")]
         public async Task<ActionResult> Get(int eventoId)
         {
@@ -37,6 +42,12 @@ namespace ProEventos.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Salvar e atualiza os lotes.
+        /// </summary>
+        /// <param name="eventoId">Código unico do evento.</param>
+        /// <param name="models"></param>
+        /// <returns></returns>
         [HttpPut("{eventoId}")]
         public async Task<ActionResult<Evento>> SaveLotes(int eventoId, LoteDto[] models)
         {
@@ -54,6 +65,12 @@ namespace ProEventos.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta um lote do evento.
+        /// </summary>
+        /// <param name="eventoId">Código unico do evento.</param>
+        /// <param name="loteId"></param>
+        /// <returns></returns>
         [HttpDelete("{eventoId}/{loteId}")]
         public async Task<ActionResult> Delete(int eventoId, int loteId)
         {

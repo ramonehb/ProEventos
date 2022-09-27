@@ -5,7 +5,6 @@ import { Evento } from '@app/models/Evento';
 import { Lote } from '@app/models/Lote';
 import { EventoService } from '@app/services/evento.service';
 import { Constants } from '@app/util/constants';
-import { idLocale } from 'ngx-bootstrap/chronos';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -44,6 +43,10 @@ export class EventoDetalheComponent implements OnInit {
   }
   get f(): any {
     return this.form.controls;
+  }
+
+  get modoEditar(): boolean {
+    return this.novo === false;
   }
 
   get bsConfig(): any {
@@ -115,8 +118,8 @@ export class EventoDetalheComponent implements OnInit {
       this.evento = (this.novo) ? { ... this.form.value } : { id: this.evento.id, ... this.form.value };
 
       this.eventoService[this.metodo](this.evento).subscribe(
-        () => {
-          this.router.navigate(['eventos/lista']);
+        (eventoRetorno: Evento) => {
+          this.router.navigate([`eventos/detalhe/${eventoRetorno.id}`]);
           this.toastr.success(this.novo ? 'Evento cadastro com sucesso' : 'Evento atualizado com sucesso', 'Sucesso');
         },
         (erro: any) => {
