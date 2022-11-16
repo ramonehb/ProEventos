@@ -10,6 +10,7 @@ using ProEventos.Persistence;
 using ProEventos.Persistence.Contextos;
 using ProEventos.Persistence.Interfaces;
 using ProEventos.Service;
+using ProEventos.Service.Interfaces;
 
 namespace ProEventos.API
 {
@@ -37,6 +38,8 @@ namespace ProEventos.API
             services.AddScoped<ILotePersist, LotePersist>();
             services.AddScoped<ILoteService, LoteService>();
             services.AddScoped<IGeralPersist, GeralPersist>();
+            services.AddScoped<IUsuarioPersist, UsuarioPersist>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddCors();
