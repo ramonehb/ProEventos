@@ -8,7 +8,7 @@ import { Route, Router } from '@angular/router';
 })
 export class TituloComponent implements OnInit {
   @Input() titulo = '';
-  @Input() subtitulo = 'Desde 2022';
+  @Input() subtitulo = 'Desde 2006';
   @Input() iconClass = 'fa fa-user';
   @Input() botaoListar = false;
 
