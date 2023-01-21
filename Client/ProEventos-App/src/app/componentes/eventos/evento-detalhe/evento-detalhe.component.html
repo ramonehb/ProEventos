@@ -92,10 +92,10 @@
     </div>
     <div class="card-footer">
       <div class="d-flex">
-        <button class="btn btn-outline-secondary mr-auto border" (click)="resetarForm()">
+        <button class="btn btn-outline-secondary mr-auto border" (click)="resetarFormEvento()">
           Cancelar Alteração
         </button>
-        <button class="btn btn-success" [disabled]="!form.valid" (click)="salvarAlteracao(evento)">
+        <button class="btn btn-success" [disabled]="!form.valid" (click)="salvarEvento(evento)">
           <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
           Salvar Evento
         </button>
@@ -105,6 +105,8 @@
 </div>
 
 <div class="card rounded shadow-sm mt-4" *ngIf="modoEditar">
+  <!-- <p>{{form.controls.lotes.value | json}}</p>
+  <p>{{form.controls.lotes.status | json}}</p> -->
   <div class="p-3">
     <div class="d-flex border-bottom">
       <h2 class="mr-auto">
@@ -120,7 +122,8 @@
         <div formArrayName="lotes" *ngFor="let lote of lotes.controls; let i=index">
           <fieldset [formGroupName]="i" class="form-group">
             <legend class="d-flex justify-content-between capitalize">
-              <button class="p-2 btn btn-sm btn-outline-warning mb-1 d-flex"
+              <button (click)="removerLote(template, i)"
+                      class="p-2 btn btn-sm btn-outline-warning mb-1 d-flex"
                       tooltip="Excluir Lote"
                       [adaptivePosition]="false"
                       [delay]="500"
@@ -144,11 +147,11 @@
             </div>
             <div class="form-group col-md-4">
               <label>Data Início</label>
-              <input type="text" class="form-control" formControlName="dataInicio" placeholder="01/01/2023">
+              <input type="text" class="form-control" formControlName="dataInicio" placeholder="01/01/2023" bsDatepicker [bsConfig]="bsConfigLote">
             </div>
             <div class="form-group col-md-4">
               <label>Data Fim</label>
-              <input type="text" class="form-control" formControlName="dataFim" placeholder="01/01/2023">
+              <input type="text" class="form-control" formControlName="dataFim" placeholder="01/01/2023" bsDatepicker [bsConfig]="bsConfigLote">
             </div>
           </div>
         </fieldset>
@@ -162,13 +165,21 @@
   </div>
   <div class="card-footer">
   <div class="d-flex">
-    <button class="btn btn-outline-secondary mr-auto border">
+    <button class="btn btn-outline-secondary mr-auto border" (click)="resetarFormLotes()">
       Cancelar Alteração
     </button>
-    <button class="btn btn-success">
+    <button class="btn btn-success" (click)="salvarLotes()">
       Salvar Lotes
     </button>
   </div>
   </div>
 </div>
 <br/>
+
+<ng-template #template>
+  <div class="modal-body text-center modal-lg">
+    <p>Tem certeza que deseja excluir o lote {{this.loteAtual.nome}} ?</p>
+    <button type="button" class="btn btn-danger" (click)="confirmDeleteLote()">Sim</button>
+    <button type="button" class="btn btn-default" (click)="declineDeleteLote()">Não</button>
+  </div>
+</ng-template>
