@@ -93,7 +93,7 @@ export class EventoDetalheComponent implements OnInit {
   public carregaEvento(): void {
     this.eventoId = +this.routerActive.snapshot.paramMap.get('id');
 
-    if (this.eventoId != null || this.eventoId === 0) {
+    if (this.eventoId != null && this.eventoId !== 0) {
       this.metodo = 'put';
       this.novo = false;
       this.spinner.show();
@@ -159,8 +159,8 @@ export class EventoDetalheComponent implements OnInit {
   }
 
   public salvarLotes(): void {
-    this.spinner.show();
     if (this.form.controls.lotes.valid){
+      this.spinner.show();
       this.loteService.saveLote(this.eventoId, this.form.value.lotes)
         .subscribe(
           () => {
@@ -194,12 +194,20 @@ export class EventoDetalheComponent implements OnInit {
         },
         (erro: any) => {
           console.log(`Erro: ${erro}`);
-          this.toastr.error('Erro ao cadastrar lote', 'Atenção');
+          this.toastr.error('Erro ao excluir lote', 'Atenção');
         }
       ).add(() => this.spinner.hide());
   }
 
   public declineDeleteLote(): void {
     this.modalRef.hide();
+  }
+
+  public mudarValorData(data: Date, indice: number, campo: string): void {
+    this.lotes.value[indice][campo] = data;
+  }
+
+  public retornaTituloLote(nome: string): string {
+    return nome === null || nome === '' ? 'Nome do lote' : nome;
   }
 }
